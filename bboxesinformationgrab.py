@@ -1,5 +1,5 @@
 def setup_bboxes():
-    f = open("boundingboxes.txt", 'r')
+    f = open("Boundingboxes/OctoberSky.txt", 'r')
 
     lines = f.readlines()  # A list of each individual line
     frames = []

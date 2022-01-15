@@ -45,9 +45,7 @@ class application():
 
         #-----------------------------------------------------------------------------------------------
 
-        self.img_list = ['photo-1612151855475-877969f4a6cc.png', 'photo-1490730141103-6cac27aaab94.png', 'download.png',
-                    'background-image.png',
-                    'reference-picture-of-a-bear-added-in-blender-tian-ooi-via-all3dp-200302.png']
+        self.img_list = ['Images/1.png', 'Images/2.png', 'Images/3.png', 'Images/4.png', 'Images/5.png']
 
         self.display_padx = (20, 10)
         self.display_pady = (20, 10)
@@ -158,9 +156,10 @@ class application():
                 else:
                     self.panel.configure(image=image)
                     self.panel.image = image
-            timer.stop()
-            print(timer.fps())
-            print(timer.elapsed())
+
+            # timer.stop()
+            # print(timer.fps())
+            # print(timer.elapsed())
 
         except RuntimeError as e:
             print(e)
@@ -265,7 +264,7 @@ class application():
             i += 1
 
     def setup_bboxes(self):
-        f = open("boundingboxes.txt", 'r')
+        f = open("Boundingboxes/{path}.txt".format(path=name), 'r')
 
         lines = f.readlines()  # A list of each individual line
         frames = []
@@ -306,8 +305,10 @@ class application():
                         bboxes[k] = float(bboxes[k])
                     frames[i][j] = bboxes
         self.allboundingboxes = frames
+
 fps = 24
-src = "C:/Users/Evanl/Test Sample/movie.mov"
+name = "OctoberSky"
+src = "C:/Users/Evanl/Test Sample/{path}.mov".format(path=name)
 vs = cv2.VideoCapture(src)
 
 
@@ -318,86 +319,3 @@ vidView.root.bind('<Motion>', vidView.motion)
 vidView.start_thread()
 
 vidView.root.mainloop()
-
-
-# img_list = ['photo-1612151855475-877969f4a6cc.png', 'photo-1490730141103-6cac27aaab94.png', 'download.png', 'background-image.png', 'reference-picture-of-a-bear-added-in-blender-tian-ooi-via-all3dp-200302.png']
-# def changevid(num):
-#     img = Image.open(img_list[num])
-#     img = ImageTk.PhotoImage(img)
-#     display = Label(window, height=810, width=1440, image=img)
-#     display.image = img
-#     display.grid(column=0, row=0, columnspan=5, rowspan=7, padx=display_padx, pady=display_pady)
-#
-# def search_web():
-#     data = search_entry.get()
-#     results = search(data)
-#     webbrowser.open(results[0])
-#
-#
-# window = Tk()
-# window.title = ('Application')
-#
-# img = Image.open('photo-1612151855475-877969f4a6cc.png')
-# img = ImageTk.PhotoImage(img)
-#
-# display_padx = (20, 10)
-# display_pady = (20, 10)
-#
-# display = Label(window, height=810, width=1440, image=img)
-# display.image = img
-# display.grid(column=0, row=0, columnspan=5, rowspan=7, padx=display_padx, pady=display_pady)
-#
-# row_offset = 6
-#
-# buttonheight = 120
-# buttonwidth = 210
-#
-# button_padx = (0, 10)
-# button_pady = (0, 10)
-#
-# img = Image.open('download.png')
-# img = ImageTk.PhotoImage(img)
-#
-# Button1 = Button(window, height=buttonheight, width=buttonwidth, image=img, command=lambda: changevid(0))
-# Button1.grid(column=0, row=1 + row_offset, padx=button_padx, pady=button_pady)
-# Button1.image = img
-#
-# img = Image.open('photo-1490730141103-6cac27aaab94.png')
-# img = ImageTk.PhotoImage(img)
-#
-# Button2 = Button(window, height=buttonheight, width=buttonwidth, image=img, command=lambda: changevid(1))
-# Button2.grid(column=1, row=1 + row_offset, padx=button_padx, pady=button_pady)
-# Button2.image = img
-#
-# img = Image.open('background-image.png')
-# img = ImageTk.PhotoImage(img)
-#
-# Button3 = Button(window, height=buttonheight, width=buttonwidth, image=img, command=lambda: changevid(2))
-# Button3.grid(column=2, row=1 + row_offset, padx=button_padx, pady=button_pady)
-# Button3.image = img
-#
-# img = Image.open('ZiClJf-1920w.png')
-# img = ImageTk.PhotoImage(img)
-#
-# Button4 = Button(window, height=buttonheight, width=buttonwidth, image=img, command=lambda: changevid(3))
-# Button4.grid(column=3, row=1 + row_offset, padx=button_padx, pady=button_pady)
-# Button4.image = img
-#
-# img = Image.open('reference-picture-of-a-bear-added-in-blender-tian-ooi-via-all3dp-200302.png')
-# img = ImageTk.PhotoImage(img)
-#
-# Button5 = Button(window, height=buttonheight, width=buttonwidth, image=img, command=lambda: changevid(4))
-# Button5.grid(column=4, row=1 + row_offset, padx=button_padx, pady=button_pady)
-# Button5.image = img
-#
-# stats_button = Button(window, width=21, height=7, text='Viewing Statistics', command=search_web)
-# stats_button.grid(row=1 + row_offset, column=5, padx=button_padx, pady=button_pady)
-#
-
-#
-
-#
-
-#
-
-# window.mainloop()
